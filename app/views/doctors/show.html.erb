@@ -1,0 +1,14 @@
+<h2>
+ <strong>Doctor:</strong>
+  <%= @doctor.name %>
+</h2>
+
+<h2>Patients:</h2>
+<%= render @doctor.patients %>
+
+<h2>Add a new patient:</h2>
+<%= render 'patients/form_new' %>
+
+<%= link_to 'Back', doctors_path %>
+
+
