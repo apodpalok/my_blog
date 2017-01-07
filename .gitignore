@@ -22,3 +22,5 @@
 
 .DS_Store
 .idea
+.rubocop.yml
+.rubocop_todo.yml

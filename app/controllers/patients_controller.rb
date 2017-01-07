@@ -1,6 +1,6 @@
 class PatientsController < ApplicationController
   before_action :find_doctor_id
- 
+
   def create
     @patient = @doctor.patients.create(patient_params)
     redirect_to doctor_path(@doctor)
