@@ -3,7 +3,11 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @articles = Article.all
+    @articles = if params[:tag]
+                  Article.tagged_with(params[:tag])
+                else
+                  Article.all
+                end
   end
 
   def show; end
@@ -40,7 +44,7 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :text, :image)
+    params.require(:article).permit(:title, :text, :image, :all_tags)
   end
 
   def find_id

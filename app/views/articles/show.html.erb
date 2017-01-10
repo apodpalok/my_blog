@@ -17,6 +17,12 @@
   <%= @article.user.email %>
 </p>
 
+<p>
+  <strong>Tags(<%= @article.tags.size %>):</strong>
+  <%= raw tag_links(@article.all_tags) %>
+</p>
+
+
 <h3>Comments(<%= @article.comments.size %>):</h3>
 <%= render @article.comments %>
 

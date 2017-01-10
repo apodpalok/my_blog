@@ -6,6 +6,7 @@
     <th>Text</th>
     <th>Image</th>
     <th>User</th>
+    <th>Tags</th>
     <th colspan="3"></th>
   </tr>
 
@@ -15,6 +16,7 @@
       <td><%= article.text %></td>
       <td><%= image_tag article.image.url(:small) %></td>
       <td><%= article.user.email %></td>
+      <td><%= raw tag_links(article.all_tags) %></td>
       <td><%= link_to 'Show', article_path(article) %></td>
       <% if article.user == current_user %>
         <td><%= link_to 'Edit', edit_article_path(article) %></td>
