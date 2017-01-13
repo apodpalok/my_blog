@@ -1,36 +1,55 @@
-<p>
- <strong>Title:</strong>
-  <%= @article.title %>
+<!-- Article -->
+<h1><%= @article.title %></h1>
+
+<p class="lead">
+  by <%= @article.user.email %>
 </p>
 
-<p>
-  <%= image_tag @article.image.url(:large) %>
-</p>
+<hr>
 
 <p>
-  <strong>Text:</strong>
-  <%= @article.text %>
+  <span class="glyphicon glyphicon-time"></span><%= @article.created_at.strftime('%x') %>
 </p>
 
-<p>
-  <strong>Author:</strong>
-  <%= @article.user.email %>
-</p>
+<hr>
+
+<%= image_tag @article.image.url(:large) %>
+
+<hr>
+
+<p class="lead"><%= @article.text %></p>
+
+<hr>
 
 <p>
-  <strong>Tags(<%= @article.tags.size %>):</strong>
+  <span class="glyphicon glyphicon-tags"></span>
   <%= raw tag_links(@article.all_tags) %>
 </p>
 
+<hr>
 
-<h3>Comments(<%= @article.comments.size %>):</h3>
-<%= render @article.comments %>
-
-<h3>Add a comment:</h3>
+<!-- Blog Comments -->
+<!-- Comments Form -->
 <%= render 'comments/form' %>
 
-<% if @article.user == current_user %>
-  <%= link_to 'Edit', edit_article_path(@article) %>
+<hr>
+
+<!-- Comment -->
+<% if @article.comments.count == 0 %>
+  <p>This article has no comments! Be first!</p>
+<% else %>
+  <%= render @article.comments %>
 <% end %>
 
-<%= link_to 'Back', articles_path %>
+<p>
+  <% if @article.user == current_user %>
+      <%= link_to 'Edit', edit_article_path(@article) %>
+  <% end %>
+
+  <%= link_to 'Back', articles_path %>
+</p>
+
+
+
+
+

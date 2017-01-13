@@ -9,5 +9,5 @@ Rails.application.routes.draw do
     resources :patients
   end
 
-  root 'welcome#index'
+  root 'articles#index'
 end

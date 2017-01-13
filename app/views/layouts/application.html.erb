@@ -2,8 +2,8 @@
 <html>
   <head>
     <title>Blog</title>
+    <link rel="shortcut icon" href="/ruby-icon.png" type="image/png">
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -11,8 +11,29 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= link_to "Sign Up", new_user_registration_path %>
-    <%= link_to "Sign In", new_user_session_path %> <br>
-    <%= yield %>
+    <%= render 'shared/navbar' %>
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-8">
+          <h1 class="page-header">
+            <p>Blog</p>
+            <!-- Current view-->
+            <%= yield %>
+          </h1>
+        </div>
+
+        <div class="col-md-4">
+          <!-- Blog Search -->
+          <%= render "shared/search_article" %>
+          <!-- Blog Categories -->
+          <%= render "shared/tags_bar" %>
+        </div>
+      </div>
+      <!-- End of the container -->
+    </div>
   </body>
 </html>
+
+
+ruby-icon.png
