@@ -3,11 +3,11 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @articles = if params[:tag]
-                  Article.tagged_with(params[:tag])
-                else
-                  Article.all
-                end
+    if params[:search]
+      @articles = Article.search(params[:search])
+    else
+      @articles = Article.all
+    end
   end
 
   def show; end
@@ -39,6 +39,14 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
     redirect_to articles_path
+  end
+
+  def tags
+    if params[:tag]
+      @articles = Article.tagged_with(params[:tag])
+    else
+      index
+    end
   end
 
   private
