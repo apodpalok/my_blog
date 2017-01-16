@@ -1,0 +1,12 @@
+<div class="well">
+  <h4>Blog Categories</h4>
+  <div class="row">
+    <div class="col-lg-6">
+      <ul class="list-unstyled">
+        <% Tag.all.each do |tag| %>
+            <%= raw tag_links(tag.name) %><br>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
