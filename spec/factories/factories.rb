@@ -10,4 +10,10 @@ FactoryGirl.define do
     title "Title"
     text "Bla bla text"
   end
+
+  factory :comment do
+    association :article
+    commenter "Good"
+    body "Not bad"
+  end
 end
