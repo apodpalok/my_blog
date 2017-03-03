@@ -1,13 +1,13 @@
 FactoryGirl.define do
   factory :user do
-    email "test@gmail.com"
+    sequence(:email) { |n| "person#{n}@example.com" }
     password "password"
     password_confirmation "password"
   end
 
   factory :article do
+    association :user, factory: :user, strategy: :build
     title "Title"
     text "Bla bla text"
-    user_id 1
   end
 end
